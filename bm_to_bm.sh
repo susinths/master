@@ -23,3 +23,6 @@ echo  $(cat /proc/net/dev | awk "/${IF}:/ {print \$10}")  >> $TESTFILENAME
 done
 
 #TODO add capture of cat /proc/net/dev | awk "/${IF}:/ {print \$1,\$2,\$10}"
+
+
+#Start the "server" with 'while true; do ib_send_bw -D 90  -m 4096; done' 
