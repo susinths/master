@@ -26,7 +26,7 @@ echo  -n $(awk '/.*ens2-3$/ {print $5}  ' /proc/interrupts),  >> $TESTFILENAME
 echo  -n $(awk '/.*ens2-4$/ {print $6}  ' /proc/interrupts),  >> $TESTFILENAME     
 echo  -n $(awk '/.*ens2-5$/ {print $7}  ' /proc/interrupts),  >> $TESTFILENAME     
 echo  -n $(awk '/.*ens2-6$/ {print $8}  ' /proc/interrupts),  >> $TESTFILENAME     
-echo   $(awk '/.*ens2-7$/ {print $9}  ' /proc/interrupts),  >> $TESTFILENAME     
+echo   $(awk '/.*ens2-7$/ {print $9}  ' /proc/interrupts)  >> $TESTFILENAME     
 
     sleep 2
 done
