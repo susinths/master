@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+#Bash script to record various data provided by /proc/net/dev
+IF="ens2"
+IP_SERVER="192.168.100.1"
+OUTFILE="/root/netstat.txt"
+RUNTIME="30" # in seconds
+PERFCMD="perf stat -e  cpu-migrations,context-switches,task-clock,cycles,instructions,cache-references,cache-misses"
+RPERFCMD="rperf -c $IP_SERVER -p 5001 -H -G pw -l 500M -i 2 -t $RUNTIME"
+NETSTAT='cat /proc/net/dev | awk "/${IF}:/ {print \$1,\$2,\$10}"'
+SLEEP="40"
+#run rperf with perf stats
+echo -e "$(date +%F_%H:%M:%S): Before the command run: $(eval $NETSTAT)\n" >> $OUTFILE
+#echo -e "$(date +%F_%H:%M:%S): Starting the commands\n" >> $OUTFILE
+eval $PERFCMD $RPERFCMD  > /dev/null & echo -e "$(date +%F_%H:%M:%S): Started the command\n" >> $OUTFILE
+echo -e "$(date +%F_%H:%M:%S): During the command run: $(eval $NETSTAT)\n" >> $OUTFILE
+echo -e "$(date +%F_%H:%M:%S): Sleeping for $SLEEP seconds (to let the $RUNTIME seconds bench finish)\n" >> $OUTFILE
+sleep $SLEEP
+echo -e "$(date +%F_%H:%M:%S): After the command run: $(eval $NETSTAT)\n" >> $OUTFILE
+
+
+
+#perf stat -e  cpu-migrations,context-switches,task-clock,cycles,instructions,cache-references,cache-misses rperf -c $IP -p 5001 -H -G pw -l 500M -i 2 -t 30

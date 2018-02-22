@@ -1,0 +1,48 @@
+2017-09-17_18:45:10: Before the command run: ens2: 150725294674 27010183751115
+
+2017-09-17_18:45:10: Started the command
+
+2017-09-17_18:45:10: During the command run: ens2: 150725294674 27010183751115
+
+2017-09-17_18:45:10: Sleeping for 40 seconds (to let the 30 seconds bench finish)
+
+2017-09-17_18:45:50: After the command run: ens2: 150725294674 27010183751115
+
+2017-10-23_18:05:51: Before the command run: ens2: 60 120
+
+2017-10-23_18:05:51: Started the command
+
+2017-10-23_18:05:51: During the command run: ens2: 60 120
+
+2017-10-23_18:05:51: Sleeping for 40 seconds (to let the 30 seconds bench finish)
+
+2017-10-23_18:06:31: After the command run: ens2: 60 120
+
+2017-10-23_18:43:41: Before the command run: ens2: 33488220 46162779718
+
+2017-10-23_18:43:41: Started the command
+
+2017-10-23_18:43:41: During the command run: ens2: 33488220 46162779718
+
+2017-10-23_18:43:41: Sleeping for 40 seconds (to let the 30 seconds bench finish)
+
+2017-10-23_18:44:21: After the command run: ens2: 33488220 46162779718
+
+2017-11-16_20:16:38: Before the command run: ens2: 1139628516 942590428974
+
+2017-11-16_20:16:38: Started the command
+
+2017-11-16_20:16:38: During the command run: ens2: 1139628516 942590428974
+
+2017-11-16_20:16:38: Sleeping for 40 seconds (to let the 30 seconds bench finish)
+
+2017-11-16_20:16:52: Before the command run: ens2: 1139628516 942590428974
+
+2017-11-16_20:16:52: Started the command
+
+2017-11-16_20:16:52: During the command run: ens2: 1139628516 942590428974
+
+2017-11-16_20:16:52: Sleeping for 40 seconds (to let the 30 seconds bench finish)
+
+2017-11-16_20:17:32: After the command run: ens2: 1139628516 942590428974
+
