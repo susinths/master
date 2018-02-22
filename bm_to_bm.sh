@@ -14,10 +14,10 @@ TESTFILENAME="test_$(date +%F_%H-%M-%S)_bm_to_bm.txt"
 #while true; do echo -n "$(rperf   -c 192.168.100.1 -p 5001 -H -G pw -l 500M -y C) " >> test1_bm_to_bm.txt && cat /proc/loadavg >> test1_bm_to_bm.txt; done
 echo -e "Timestamp\t Bandwidth\t CPULoad1m CPULoad5m CPULoad5m NetDevRX NetDevTX IRQens2-0 IRQens2-1 IRQens2-2 IRQens2-3 IRQens2-4 IRQens2-5 IRQens2-6 IRQens2-7  " > $TESTFILENAME 
 while true
-do echo -n "$(date +%F_%H-%M-%S), " >> $TESTFILENAME && 
+do echo -n "$(date +%F_%H-%M-%S)," >> $TESTFILENAME && 
 echo -n "$(ib_send_bw -D $RUNTIME  -m 4096 -d mlx4_0 -i 1 -F --report_gbits  $IP_SRV --output=bandwidth)," >> $TESTFILENAME  
-echo -n  $(awk '{print $1 ", " $2 ", " $3 ", "}' /proc/loadavg) >> $TESTFILENAME
-echo -n $(cat /proc/net/dev | awk "/${IF}:/ {print \$2}"),  >> $TESTFILENAME     
+echo -n  $(awk '{print $1 "," $2 "," $3 ","}' /proc/loadavg) >> $TESTFILENAME
+echo -n $(cat /proc/net/dev | awk "/${IF}:/ {print \$2}"), >> $TESTFILENAME     
 echo -n $(cat /proc/net/dev | awk "/${IF}:/ {print \$10}"),  >> $TESTFILENAME     
 echo  -n $(awk '/.*ens2-0$/ {print $2}  ' /proc/interrupts),  >> $TESTFILENAME     
 echo  -n $(awk '/.*ens2-1$/ {print $3}  ' /proc/interrupts),  >> $TESTFILENAME     
