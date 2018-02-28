@@ -12,7 +12,7 @@ SLEEP="40"
 TESTFILENAME="test_$(date +%F_%H-%M-%S)_bm_to_bm.txt"
 
 #while true; do echo -n "$(rperf   -c 192.168.100.1 -p 5001 -H -G pw -l 500M -y C) " >> test1_bm_to_bm.txt && cat /proc/loadavg >> test1_bm_to_bm.txt; done
-echo -e "Timestamp\t Bandwidth\t CPULoad1m CPULoad5m CPULoad5m NetDevRX NetDevTX IRQens2-0 IRQens2-1 IRQens2-2 IRQens2-3 IRQens2-4 IRQens2-5 IRQens2-6 IRQens2-7  " > $TESTFILENAME 
+echo -e "Timestamp\t Bandwidth\t CPULoad1m CPULoad5m CPULoad5m NetDevRX NetDevTX IRQens2-0 IRQens2-1 IRQens2-2 IRQens2-3 IRQens2-4 IRQens2-5 IRQens2-6 IRQens2-7 user nice system idle iowait irq softirq steal guest guest_nice   " > $TESTFILENAME 
 while true
 do echo -n "$(date +%F_%H-%M-%S)," >> $TESTFILENAME && 
 echo -n "$(ib_send_bw -D $RUNTIME  -m 4096 -d mlx4_0 -i 1 -F --report_gbits  $IP_SRV --output=bandwidth)," >> $TESTFILENAME  
@@ -26,7 +26,8 @@ echo  -n $(awk '/.*ens2-3$/ {print $5}  ' /proc/interrupts),  >> $TESTFILENAME
 echo  -n $(awk '/.*ens2-4$/ {print $6}  ' /proc/interrupts),  >> $TESTFILENAME     
 echo  -n $(awk '/.*ens2-5$/ {print $7}  ' /proc/interrupts),  >> $TESTFILENAME     
 echo  -n $(awk '/.*ens2-6$/ {print $8}  ' /proc/interrupts),  >> $TESTFILENAME     
-echo   $(awk '/.*ens2-7$/ {print $9}  ' /proc/interrupts)  >> $TESTFILENAME     
+echo  -n $(awk '/.*ens2-7$/ {print $9}  ' /proc/interrupts),  >> $TESTFILENAME     
+echo     $(awk '/^cpu .*/ {print $2 "," $3 "," $4 "," $5 "," $6 "," $7 "," $8 "," $9 "," $10 "," $11 }' /proc/stat) >> $TESTFILENAME
 
     sleep 2
 done
